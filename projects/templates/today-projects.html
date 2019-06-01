@@ -2,17 +2,19 @@
 {% block content %}
 {{block.super}}
 
-  <!-- displaying projects -->
   <div class="row">
   <div class="col-md-12">
-{% for business in businesses %}
-<div class="col-md-4" style="padding:1%">
+{% for post in posts %}
+<div class="col-md-6" style="padding:1%">
     <div class="card">
-    <h2 class="text-center">  </h2>
-    <img class="img-responsive"  src="" class="img-responsive" style="width:500px;height:300px;padding:0;" alt="Image">
-    <h3></h3><hr>
-    <button class="btn btn-info" type="submit" name="button">Review</button> 
-    <a href="" button class="btn btn-success" type="submit" name="button">Project Link</button></a> 
+    <h3 class="text-center">Title: {{post.title}}</h3><hr>
+    <h3 class="text-center">Neighbourhood: {{post.neighbourhood}}</h3><hr>
+    <h3 class="text-center">Post: {{post.post}}</h3><hr>
+    <h3 class="text-center">Posted By: {{user}}</h3><hr>
+    <h3 class="text-center">Posted on:{{post.pub_date}}</h3>
+
+
+    <h2></h2>  
   </div>
 </div>
 </div>
@@ -24,3 +26,4 @@
   
   {% endblock %}
  
+
