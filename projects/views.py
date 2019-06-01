@@ -2,6 +2,8 @@ from django.http  import HttpResponse
 import datetime as dt
 from django.shortcuts import render
 from .models import NeighbourHood,Profile,Businesses,Posts
+from .forms import NewProfileForm,NewPostsForm,NewBusinessesForm
+
 
 
 # Create your views here.
@@ -15,6 +17,20 @@ def profile(request):
     current_user=request.user
 
     return render(request, 'profile.html', {"profile":profile,"current_user":current_user})
+
+def new_profile(request):
+    current_user=request.user
+
+    if request.method=='POST':
+        form=NewProfileForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)      
+            post.profile = current_user
+            post.save()
+        return redirect("profile")
+    else:
+        form = NewProfileForm() 
+    return render(request,'new_profile.html',{"form":form})     
 
 
 
