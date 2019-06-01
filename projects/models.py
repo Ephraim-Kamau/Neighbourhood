@@ -18,6 +18,7 @@ class NeighbourHood(models.Model):
 
 class Profile(models.Model):
     full_name = models.CharField(max_length = 100)
+    profile_pic = models.ImageField(upload_to = 'images/', blank = True)
     user = models.ForeignKey(User,on_delete = models.CASCADE,null = True)
     neighbourhood = models.ForeignKey(NeighbourHood,on_delete = models.CASCADE,null = True)
     userId =models.IntegerField(default = 0)
