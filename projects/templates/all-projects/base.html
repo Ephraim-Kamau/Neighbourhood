@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  {% if title %}
+  <title>Neighbourhood - {{title}}</title>
+  {% else %}
+    <title> Neighbourhood </title>
+  {% endif %}
+
+</head>
+<body>
+    {% block content %} <h1>Projects for {{date|date:"l d-F Y"}}</h1> {%endblock%}
+</body>
+</html>
