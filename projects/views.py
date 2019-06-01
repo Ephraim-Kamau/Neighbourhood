@@ -15,8 +15,10 @@ def projects_today(request):
 
 def profile(request):
     current_user=request.user
+    posts = Posts.objects.filter(profile = current_user)
+    profile = Profile.objects.filter()
 
-    return render(request, 'profile.html', {"profile":profile,"current_user":current_user})
+    return render(request, 'profile.html', {"profile":profile,"current_user":current_user, "posts":posts})
 
 def new_profile(request):
     current_user=request.user
