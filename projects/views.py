@@ -9,7 +9,7 @@ from .models import NeighbourHood,Profile,Businesses,Posts
 def projects_today(request):
     posts = Posts.objects.all()
 
-    return render(request, 'all-projects/today-projects.html', {"posts":posts}) 
+    return render(request, 'today-projects.html', {"posts":posts}) 
 
 
 def search_results(request):
@@ -19,10 +19,10 @@ def search_results(request):
         searched_business = Business.search_by_title(search_term)
         message = f"{search_term}"
 
-        return render(request, 'all-projects/search.html',{"message":message,"business": searched_business})
+        return render(request, 'search.html',{"message":message,"business": searched_business})
 
     else:
         message = "You haven't searched for any term"
-        return render(request, 'all-news/search.html',{"message":message})    
+        return render(request, 'search.html',{"message":message})    
 
   
