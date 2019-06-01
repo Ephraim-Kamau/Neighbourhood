@@ -7,13 +7,11 @@ class NeighbourHood(models.Model):
     neighbourhood_location = models.CharField(max_length = 100)
     occupants_count = models.IntegerField()
 
-
     def save_neighborhood(self):
         self.save()
 
     def delete_neighborhood(self):
         self.delete()   
-
 
     def __str__(self):
         return self.neighbourhood_name
@@ -25,13 +23,11 @@ class Profile(models.Model):
     userId =models.IntegerField(default = 0)
     user_email = models.EmailField()
 
-
     def save_profile(self):
         self.save()
 
     def delete_profile(self):
         self.delete()   
-
 
     @classmethod
     def find_user(cls, profile_id):
@@ -52,7 +48,6 @@ class Businesses(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE,null = True)
     business_neighbourhood = models.ForeignKey(NeighbourHood,on_delete = models.CASCADE,null = True)
     business_email = models.EmailField()
-
 
     def __str__(self):
         return self.business_name
@@ -112,7 +107,6 @@ class Posts(models.Model):
 
     class Meta:
         ordering = ['-id']
-
     
     def __str__(self):
         return self.title        

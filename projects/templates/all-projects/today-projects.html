@@ -1,5 +1,26 @@
 {%extends 'all-projects/base.html'%}
-
 {% block content %}
 {{block.super}}
-{% endblock %}
+
+  <!-- displaying projects -->
+  <div class="row">
+  <div class="col-md-12">
+{% for project in projects %}
+<div class="col-md-4" style="padding:1%">
+    <div class="card">
+    <h2 class="text-center">  </h2>
+    <img class="img-responsive"  src="" class="img-responsive" style="width:500px;height:300px;padding:0;" alt="Image">
+    <h3></h3><hr>
+    <button class="btn btn-info" type="submit" name="button">Review</button> 
+    <a href="" button class="btn btn-success" type="submit" name="button">Project Link</button></a> 
+  </div>
+</div>
+</div>
+</div>
+
+
+
+{% endfor %}
+  
+  {% endblock %}
+ 
