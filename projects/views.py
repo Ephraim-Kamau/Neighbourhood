@@ -3,11 +3,11 @@ import datetime as dt
 from django.shortcuts import render,redirect
 from .models import NeighbourHood,Profile,Businesses,Posts
 from .forms import NewProfileForm,NewPostsForm,NewBusinessesForm
-
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url='/accounts/login/')
 def projects_today(request):
     posts = Posts.objects.all()
 
@@ -20,6 +20,7 @@ def profile(request):
 
     return render(request, 'profile.html', {"profile":profile,"current_user":current_user, "posts":posts})
 
+@login_required(login_url='/accounts/login/')
 def new_profile(request):
     current_user=request.user
 
@@ -34,6 +35,7 @@ def new_profile(request):
         form = NewProfileForm() 
     return render(request,'new_profile.html',{"form":form})
 
+@login_required(login_url='/accounts/login/')
 def new_business(request):
     current_user=request.user
 
