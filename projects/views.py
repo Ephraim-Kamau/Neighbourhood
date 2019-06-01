@@ -1,6 +1,6 @@
 from django.http  import HttpResponse
 import datetime as dt
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import NeighbourHood,Profile,Businesses,Posts
 from .forms import NewProfileForm,NewPostsForm,NewBusinessesForm
 
@@ -30,7 +30,35 @@ def new_profile(request):
         return redirect("profile")
     else:
         form = NewProfileForm() 
-    return render(request,'new_profile.html',{"form":form})     
+    return render(request,'new_profile.html',{"form":form})
+
+def new_business(request):
+    current_user=request.user
+
+    if request.method=='POST':
+        form=NewBusinessesForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)      
+            post.profile = current_user
+            post.save()
+        return redirect("projectsToday")
+    else:
+        form = NewBusinessesForm() 
+    return render(request,'new_business.html',{"form":form})
+
+def new_post(request):
+    current_user=request.user
+
+    if request.method=='POST':
+        form=NewPostsForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)      
+            post.profile = current_user
+            post.save()
+        return redirect("projectsToday")
+    else:
+        form = NewPostsForm() 
+    return render(request,'new_post.html',{"form":form})    
 
 
 
