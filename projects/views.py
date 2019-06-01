@@ -11,6 +11,12 @@ def projects_today(request):
 
     return render(request, 'today-projects.html', {"posts":posts}) 
 
+def profile(request):
+    current_user=request.user
+
+    return render(request, 'profile.html', {"profile":profile,"current_user":current_user})
+
+
 
 def search_results(request):
 
