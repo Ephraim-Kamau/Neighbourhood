@@ -21,7 +21,6 @@ class Profile(models.Model):
     profile_pic = models.ImageField(upload_to = 'images/', blank = True)
     user = models.ForeignKey(User,on_delete = models.CASCADE,null = True)
     neighbourhood = models.ForeignKey(NeighbourHood,on_delete = models.CASCADE,null = True)
-    userId =models.IntegerField(default = 0)
     user_email = models.EmailField()
 
     def save_profile(self):
@@ -52,12 +51,6 @@ class Businesses(models.Model):
 
     def __str__(self):
         return self.business_name
-
-    def save_business(self):
-        self.save()
-
-    def delete_business(self):
-        Businesses.objects.filter().delete()
     
     @classmethod
     def get_businesses(cls):
@@ -75,7 +68,13 @@ class Businesses(models.Model):
         return business
 
     class Meta:
-        ordering = ['-id']        
+        ordering = ['-id']  
+
+    def save_business(self):
+        self.save()
+
+    def delete_business(self):
+        Businesses.objects.filter().delete()           
 
 class Posts(models.Model):
     title = models.CharField(max_length = 60)
@@ -83,13 +82,6 @@ class Posts(models.Model):
     profile = models.ForeignKey(User,on_delete=models.CASCADE)
     neighbourhood = models.ForeignKey(NeighbourHood,on_delete = models.CASCADE,null = True)
     pub_date = models.DateField(auto_now_add=True)
-    poster_id = models.IntegerField(default=0)
-
-    def save_post(self):
-        self.save()
-
-    def delete_post(self):
-        Posts.objects.filter().delete()
     
     @classmethod
     def get_posts(cls):
@@ -111,3 +103,9 @@ class Posts(models.Model):
     
     def __str__(self):
         return self.title        
+
+    def save_post(self):
+        self.save()
+
+    def delete_post(self):
+        Posts.objects.filter().delete()    

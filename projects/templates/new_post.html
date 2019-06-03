@@ -1,5 +1,5 @@
 {%extends 'base.html'%}
-{{block.supper}}
+{{block.super}}
 {%load bootstrap3%}
 {%block content%}
 
@@ -17,8 +17,8 @@
       <div class="uploads">
         <form class="form-group" action="{%url 'new_post'%}" method="post" enctype="multipart/form-data">
           <h3>New Post</h3>
-          {% csrf_token%}
-          {% bootstrap_form form%}
+          {% csrf_token %}
+          {% bootstrap_form form %}
           
           <button class="btn btn-info" type="submit" name="button">Upload</button>
         </form>

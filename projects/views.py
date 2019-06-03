@@ -1,4 +1,4 @@
-from django.http  import HttpResponse
+from django.http  import HttpResponse,Http404
 import datetime as dt
 from django.shortcuts import render,redirect
 from .models import NeighbourHood,Profile,Businesses,Posts
@@ -25,7 +25,7 @@ def new_profile(request):
     current_user=request.user
 
     if request.method=='POST':
-        form=NewProfileForm(request.POST,request.FILES)
+        form=NewProfileForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)      
             post.profile = current_user
@@ -40,7 +40,7 @@ def new_business(request):
     current_user=request.user
 
     if request.method=='POST':
-        form=NewBusinessesForm(request.POST,request.FILES)
+        form=NewBusinessesForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)      
             post.profile = current_user
@@ -50,11 +50,12 @@ def new_business(request):
         form = NewBusinessesForm() 
     return render(request,'new_business.html',{"form":form})
 
+@login_required(login_url='/accounts/login/')    
 def new_post(request):
     current_user=request.user
 
     if request.method=='POST':
-        form=NewPostsForm(request.POST,request.FILES)
+        form=NewPostsForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)      
             post.profile = current_user
@@ -63,7 +64,6 @@ def new_post(request):
     else:
         form = NewPostsForm() 
     return render(request,'new_post.html',{"form":form})    
-
 
 
 def search_results(request):
@@ -77,6 +77,17 @@ def search_results(request):
 
     else:
         message = "You haven't searched for any business"
-        return render(request, 'search.html',{"message":message})    
+        return render(request, 'search.html',{"message":message})  
+
+def find_business(request,business_id):
+    business_id
+    try :
+        business = Business.objects.get(user_id = business_id)
+
+    except ObjectDoesNotExist:
+        
+        raise Http404()
+
+    return render(request, 'find_business.html', {"business":business, "business_id":business_id})      
 
   
