@@ -5,6 +5,25 @@ This is an application that allows users in an area to interact with other peopl
 
 ### Description
 This is an application that allows users in an area to interact with other people who also live in the same area. Users an create posts that details what is going on within the neighbourhood and also create posts that detail businesses located in that area. Users can also find the contacts for the local police authorities and health centres.
+ 
+
+|        User Requirements                 |           Input                           |           Output                         |
+|------------------------------------------|-------------------------------------------|------------------------------------------|
+| Sign Up/Login                            | To create a new account, click on the sign| If login is successful, the user is      |
+|                                          | up link and fill in the form details. To  | redirected to the home page              |
+|                                          | login, fill in the details                |                                          |
+| Add a New Post                           | Click on the New Post tab on the navbar   | A new Post is created                    |
+|                                          | and fill out the form                     |                                          |
+| Add a New Business                       | Click on the New Business tab on the      | A new Business is added                  |
+|                                          | navbar and fill out the form              |                                          |
+| Create a New Profile                     | Click on the Profile tab on the navbar    | A new Profile for the user is created    |
+|                                          | then click on the Edit Profile button     |                                          |
+| To view All Posts                        | Navigate to the home page                 | All posts will be displayed              |
+| Search For a Business                    | Enter the business name into the search   | All businesses that match the searched   |
+|                                          | bar in the navbar                         | term will be displayed                   |
+| Log Out                                  | Click on the Account button and select    | You will be logged out                   |
+|                                          | log out                                   |                                          |
+
 
 ### Setup/Installation Requirements
 - Ensure you have Python3.6 installed.
