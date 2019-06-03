@@ -11,8 +11,8 @@
         <h2>Neighbourhood: {{profile.neighbourhood}}</h2><hr>
         <h2>Email: {{profile.user_email}} </h2><hr>   
         {% endfor %}
-        {% for post in posts%}
         <h2>Posts:</h2>
+        {% for post in posts%}
         <h3><ul><li>{{post.title}}</li></ul></h3>
         {% endfor %}
         <hr>
